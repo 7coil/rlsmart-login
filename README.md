@@ -90,5 +90,5 @@ This then sends a regular tempoary authentication code that can be found when lo
 6. On subsequent visits to this site, simply pasting this "master code" into the box will allow you to login to realsmart with the code
 7. If you would like to login to Google Services (also not affiliated with moustacheminer.com), just go to the corrosponding Google Application, and login with your normal Google School/Educational Institution/Whatever account.
 
-> moustacheminer.com provides NO warranty to whatever happens to your realsmart account - Please read the source code before using to make sure no personal information is sent to malicious people.
+> moustacheminer.com provides NO warranty to whatever happens to your realsmart account - Please read the source code before using to make sure no personal information is sent to malicious people.  
 > This "master code" can be used to login to realsmart without any password authentication of any sort. It's like leaving a locked door with a button to open it.
