@@ -15,7 +15,7 @@ MOUSTACHEMINER.COM IS:
 **NOT AUTHORISED TO RELEASE THIS MATERIAL BY THIS COMPANY**  
 **NOT ENDORSED WITH THIS COMPANY**  
 **NOT SPONSORED BY THIS COMPANY**  
-**ARE NOT AFFILIATED WITH ANY REGISTERED, UNREGISTERED OR COPYRIGHTS THAT THIS COMPANY MAY HOLD**  
+**ARE NOT AFFILIATED WITH ANY REGISTERED OR UNREGISTERED TRADEMARKS OR COPYRIGHTS THAT THIS COMPANY MAY HOLD**  
 *(in any way, shape or form in all potential cases in all measurable dimensions and universes, even those that may not exist)*
 
 After this point, any reference to "REALSMART" is referring to the software, found at "www.rlsmart.net" and NOT the business.

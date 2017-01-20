@@ -33,7 +33,7 @@ function getMaster(redirect) {
 			if(data.error == false){
 				$("#master").html(data.member.hash_key);
 				getLogin(data.member.hash_key, redirect);
-			}else{
+			} else {
 				alert("Something happened. Are you connected to the internet, or did you remember your password?");
 			}
 		}
