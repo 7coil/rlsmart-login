@@ -1,61 +1,74 @@
-//get the LOGIN key from the MASTER key
-function getLogin(master, redirect) {
-	$.ajax({
-		type: 'get',
-		url: 'https://www.rlsmart.net/webservices/realsmart_access_server.php?method=getToken&arg1=' + master,
-		dataType: 'xml',
-		success: function(data, textStatus, jqXHR){
-			var key = $(data).find('response')[0];
-			var login = "https://www.rlsmart.net/sso/cloud/welcome_token.php?returnUrl=https%3A%2F%2Frlsmart.net%2Fmain%2F&token=" + $(key).text();
-			$("#login").html('Click here to login (or copy it...)')
+const getLogin = async (token, redirect) => {
+	const data = await fetch(`https://www.rlsmart.net/webservices/realsmart_access_server.php?method=getToken&arg1=${token}`)
+		.then(res =>
+			new Promise(async (resolve, reject) => {
+				const text = await res.text();
+				const parser = new DOMParser();
+				const xml = parser.parseFromString(text, 'text/xml');
+				resolve(xml);
+			})
+		)
 
-			if(redirect){
-				$(location).attr("href", login);
-			} else {
-				$("#login").attr('href', login);
-			}
+	self.data = data;
+	const status = data.getElementsByTagName('status')[0].innerHTML;
+
+	if (status === 'success') {
+		const token = data.getElementsByTagName('response')[0].innerHTML;
+		const link = `https://www.rlsmart.net/sso/cloud/welcome_token.php?returnUrl=https%3A%2F%2Frlsmart.net%2Fmain%2F&token=${token}`;
+		if (redirect) {
+			window.location.href = link;
+		} else {
+			document.getElementById('loginLink').innerHTML = 'Login';
+			document.getElementById('loginLink').href = link
 		}
-	});
+		
+	} else {
+		document.getElementById('textDisplay').innerHTML = data.getElementsByTagName('message')[0].innerHTML.replace(/&lt;/g, '<').replace(/&gt;/g, '>');
+	}
 }
 
-//get the MASTER key
-function getMaster(redirect) {
-	$.ajax({
-		type: 'post',
-		url: 'http://www.rlsmart.net/api-rs2/member/auth/login',
-		dataType: 'json',
-		data: {
-			short_code: $('#sso_shortcode').val(),
-			username: $('#sso_login_username').val(),
-			password: $('#sso_login_password').val()
+const searchParams = params => Object.keys(params).map(key => encodeURIComponent(key) + '=' + encodeURIComponent(params[key])).join('&');
+
+// Get the token
+const getToken = async (redirect) => {
+	const data = await fetch('https://www.rlsmart.net/api-rs2/member/auth/login', {
+		method: 'post',
+		headers: {
+			'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8'
 		},
-		success: function(data, textStatus, jqXHR){
-			if(data.error == false){
-				$("#master").html(data.member.hash_key);
-				getLogin(data.member.hash_key, redirect);
-			} else {
-				alert("Something happened. Are you connected to the internet, or did you remember your password?");
-			}
-		}
-	});
+		body: searchParams({
+			short_code: document.getElementById('sso_shortcode').value,
+			username: document.getElementById('sso_login_username').value,
+			password: document.getElementById('sso_login_password').value
+		})
+	}).then(res => res.json());
+
+	console.log(data);
+
+	if (data.error === false) {
+		document.getElementById('textDisplay').innerHTML = data.member.hash_key;
+		getLogin(data.member.hash_key, redirect);
+	} else {
+		alert(data.message);
+	}
 }
 
-// Login Submit
-$(document).on("click", "#sso_login_submit", function(event){
-	getMaster(true);
-});
+window.addEventListener('load', () => {
+	console.log('Loaded!');
+	// Login Submit
+	document.getElementById('sso_login_submit').onclick = (event) => {
+		getToken(true);
+	};
 
-// Get master
-$(document).on("click", "#sso_get_master", function(event){
-	getMaster(false);
-});
+	document.getElementById('sso_get_token').onclick = (event) => {
+		getToken(false);
+	};
 
-//auto login with master
-$(document).on("click", "#sso_master_submit", function(event){
-	getLogin($('#sso_master_id').val(), true);
-});
+	document.getElementById('sso_token_submit').onclick = (event) => {
+		getLogin(document.getElementById('sso_token_id').value, true);
+	};
 
-//get login url with master
-$(document).on("click", "#sso_master_submit_url", function(event){
-	getLogin($('#sso_master_id').val(), false);
+	document.getElementById('sso_token_submit_url').onclick = (event) => {
+		getLogin(document.getElementById('sso_token_id').value, false);
+	};
 });

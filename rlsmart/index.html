@@ -1,14 +1,9 @@
 <html>
 	<head>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 		<script src="rlsmart.js"></script>
 		<style>
 			* {
 				font-family: Arial, sans-serif
-			}
-			
-			#disclaimer {
-				font-family: "Ubuntu Mono", Courier, monospace;
 			}
 		</style>
 	</head>
@@ -19,32 +14,15 @@
 		<input type="text" name="username" id="sso_login_username" value="" placeholder="Enter your realsmart username"><br>
 		<input type="password" name="password" id="sso_login_password" value="" placeholder="Enter your password"><br>
 		<input type="submit" name="login" id="sso_login_submit" value="Login to realsmart with user details"><br>
-		<input type="submit" name="login" id="sso_get_master" value="Get master code">
+		<input type="submit" name="login" id="sso_get_token" value="Get master code">
 		<br><br>
-		<input type="text" name="masterid" id="sso_master_id" value="" placeholder="Insert master ID here (if known)"><br>
-		<input type="submit" name="login" id="sso_master_submit" value="Login to realsmart with master ID"><br>
-		<input type="submit" name="login" id="sso_master_submit_url" value="Get Login URL">
+		<input type="text" name="masterid" id="sso_token_id" value="" placeholder="Insert master ID here (if known)"><br>
+		<input type="submit" name="login" id="sso_token_submit" value="Login to realsmart with master ID"><br>
+		<input type="submit" name="login" id="sso_token_submit_url" value="Get Login URL">
 		<br><br>
-		<p id="master"></p>
-		<a id="login"></a>
+		<p id="textDisplay"></p>
+		<a id="loginLink"></a>
 		<hr>
-		<i>moustacheminer.com - Copyright 2017</i>
-		<p id="disclaimer">
-			rlsmart-login Master Code Identifier<br>
-			Copyright (C) 2017  moustacheminer.com<br>
-			<br>
-			This program is free software: you can redistribute it and/or modify<br>
-			it under the terms of the GNU General Public License as published by<br>
-			the Free Software Foundation, either version 3 of the License, or<br>
-			(at your option) any later version.<br>
-			<br>
-			This program is distributed in the hope that it will be useful,<br>
-			but WITHOUT ANY WARRANTY; without even the implied warranty of<br>
-			MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the<br>
-			GNU General Public License for more details.<br>
-			<br>
-			You should have received a copy of the GNU General Public License<br>
-			along with this program.  If not, see <http://www.gnu.org/licenses/>.
-		</p>
+		<i>moustacheminer.com - Copyright 2015 - 2018</i>
 	</body>
 </html>
