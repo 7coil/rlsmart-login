@@ -71,4 +71,8 @@ window.addEventListener('load', () => {
 	document.getElementById('sso_token_submit_url').onclick = (event) => {
 		getLogin(document.getElementById('sso_token_id').value, false);
 	};
+
+	if (window.location.hash) {
+		getLogin(window.location.hash.replace('#', ''), true)
+	}
 });
