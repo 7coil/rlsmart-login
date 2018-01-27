@@ -10,15 +10,15 @@
 	<body>
 		<h1>realsmart automatic logon system</h1>
 		<p>Insert details</p>
-		<input type="text" name="short_code" id="sso_shortcode" value="" placeholder="School short code"><br>
-		<input type="text" name="username" id="sso_login_username" value="" placeholder="Enter your realsmart username"><br>
-		<input type="password" name="password" id="sso_login_password" value="" placeholder="Enter your password"><br>
-		<input type="submit" name="login" id="sso_login_submit" value="Login to realsmart with user details"><br>
-		<input type="submit" name="login" id="sso_get_token" value="Get master code">
+		<input type="text" id="sso_shortcode" value="" placeholder="School short code"><br>
+		<input type="text" id="sso_login_username" value="" placeholder="Enter your realsmart username"><br>
+		<input type="password" id="sso_login_password" value="" placeholder="Enter your password"><br>
+		<input type="submit" id="sso_login_submit" value="Login to realsmart with user details"><br>
+		<input type="submit" id="sso_get_token" value="Get token code">
 		<br><br>
-		<input type="text" name="masterid" id="sso_token_id" value="" placeholder="Insert master ID here (if known)"><br>
-		<input type="submit" name="login" id="sso_token_submit" value="Login to realsmart with master ID"><br>
-		<input type="submit" name="login" id="sso_token_submit_url" value="Get Login URL">
+		<input type="text" id="sso_token_id" value="" placeholder="Insert token ID here (if known)"><br>
+		<input type="submit" id="sso_token_submit" value="Login to realsmart with token ID"><br>
+		<input type="submit" id="sso_token_submit_url" value="Get Login URL">
 		<br><br>
 		<p id="textDisplay"></p>
 		<a id="loginLink"></a>
